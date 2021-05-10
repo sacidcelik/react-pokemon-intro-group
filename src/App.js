@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Card from './Card';
 
 function App() {
+  const pokemon = [
+    { name: 'Pikachu', type: 'Elektro' },
+    { name: 'Glumanda', type: 'Feuer' },
+    { name: 'Bisasam', type: 'Pflanze' },
+    { name: 'Schiggy', type: 'Wasser' },
+    { name: 'Smettbo', type: 'Käfer' },
+    { name: 'Smettbo', type: 'Elektro' },
+    { name: 'Froggy', type: 'Frosch' },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Pokemon</h1>
+      {pokemon.map((pokemon) => (
+        <Card name={pokemon.name} type={pokemon.type} />
+      ))}
     </div>
   );
 }
