@@ -9,7 +9,8 @@ function App() {
     { name: 'Schiggy', type: 'Wasser' },
     { name: 'Smettbo', type: 'Käfer' },
     { name: 'Smettbo', type: 'Elektro' },
-    { name: 'Froggy', type: 'Frosch' },
+    { name: 'Vulpix', type: 'Feuer' },
+    { name: 'Pummeluff', type: 'Fee' },
   ];
 
   return (

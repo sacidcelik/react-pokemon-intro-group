@@ -13,7 +13,8 @@ export default function Card(props) {
       <button>
         <img
           src={Pokeball}
-          style={{ width: '30px', height: '30px' }}
+          width="30"
+          height="30"
           alt="Catch pokemon and add to pokeball"
         />
       </button>
@@ -23,11 +24,12 @@ export default function Card(props) {
 
 function getColor(element) {
   const backgroundColors = {
-    Elektro: 'yellow',
+    Elektro: 'gold',
     Feuer: 'crimson',
     Pflanze: 'green',
-    Wasser: 'deepskyblue',
-    Frosch: 'limegreen',
+    Wasser: 'midnightblue',
+    Käfer: 'sandybrown',
+    Fee: 'lightpink',
     default: 'grey',
   };
 
