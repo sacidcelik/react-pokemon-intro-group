@@ -1,16 +1,17 @@
-import './Card.css';
 import Pokeball from './images/pokeball.svg';
+import getColor from './lib/Color';
+import styled from 'styled-components/macro';
 
 export default function Card(props) {
   // const name = props.name;
   // const type = props.type
-  const { name, type } = props;
+  const { name, type, onCatchPokemon } = props;
 
   return (
-    <article className="card" style={{ background: getColor(type) }}>
+    <CardWrapper background={getColor(type)}>
       <h2>{name}</h2>
       <p>{type}</p>
-      <button>
+      <button onClick={() => onCatchPokemon(name)}>
         <img
           src={Pokeball}
           width="30"
@@ -18,57 +19,33 @@ export default function Card(props) {
           alt="Catch pokemon and add to pokeball"
         />
       </button>
-    </article>
+    </CardWrapper>
   );
 }
 
-function getColor(element) {
-  const backgroundColors = {
-    Elektro: 'gold',
-    Feuer: 'crimson',
-    Pflanze: 'green',
-    Wasser: 'midnightblue',
-    Käfer: 'sandybrown',
-    Fee: 'lightpink',
-    default: 'grey',
-  };
+const CardWrapper = styled.article`
+  background: ${(props) => props.background || 'salmon'};
+  color: ivory;
+  padding: 0.3rem;
+  margin: 0.2rem;
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
 
-  return backgroundColors[element]
-    ? backgroundColors[element]
-    : backgroundColors['default'];
-}
+  h2,
+  p {
+    text-shadow: 0 -0.5px 2px lightslategray;
+  }
 
-// function getColor(element) {
-//   let backgroundColor = '';
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform ease-out 0.2s;
+  }
 
-//   if (element === 'Elektro') {
-//     backgroundColor = 'yellow';
-//   } else if (element === 'Feuer') {
-//     backgroundColor = 'red';
-//   } else if (element === 'Pflanze' || element === 'Frosch') {
-//     backgroundColor = 'green';
-//   } else if (element === 'Wasser') {
-//     backgroundColor = 'blue';
-//   } else {
-//     backgroundColor = 'grey';
-//   }
-
-//   switch (element) {
-//     case 'Elektro':
-//       backgroundColor = 'yellow';
-//       break;
-//     case 'Feuer':
-//       backgroundColor = 'red';
-//       break;
-//     case 'Frosch':
-//     case 'Pflanze':
-//       backgroundColor = 'green';
-//       break;
-//     case 'Wasser':
-//       backgroundColor = 'blue';
-//       break;
-//     default:
-//       backgroundColor = 'grey';
-//   }
-//   return backgroundColor;
-// }
+  button:hover {
+    transform: rotate(-25deg);
+    transition: transform ease-in 0.3s;
+  }
+`;

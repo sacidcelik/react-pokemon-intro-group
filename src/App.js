@@ -1,6 +1,6 @@
-import './App.css';
 import Card from './Card';
-
+import { useState } from 'react';
+import Pokeball from './Pokeball';
 function App() {
   const pokemon = [
     { name: 'Pikachu', type: 'Elektro' },
@@ -8,16 +8,52 @@ function App() {
     { name: 'Bisasam', type: 'Pflanze' },
     { name: 'Schiggy', type: 'Wasser' },
     { name: 'Smettbo', type: 'Käfer' },
-    { name: 'Smettbo', type: 'Elektro' },
     { name: 'Vulpix', type: 'Feuer' },
     { name: 'Pummeluff', type: 'Fee' },
   ];
 
+  const [wildPokemon, setWildPokemon] = useState(pokemon);
+  const [pokeballs, setPokeballs] = useState([]);
+
+  function catchPokemon(name) {
+    const pokemonToCatch = wildPokemon.find((pokemon) => pokemon.name === name);
+    setPokeballs([pokemonToCatch, ...pokeballs]);
+    removePokemonFromWild(name);
+  }
+
+  function removePokemonFromWild(name) {
+    const freePokemon = wildPokemon.filter((pokemon) => pokemon.name !== name);
+    setWildPokemon(freePokemon);
+  }
+
+  function releasePokemon(name) {
+    const remainingPokemon = pokeballs.filter(
+      (pokemon) => pokemon.name !== name
+    );
+    const pokemonToRelease = pokeballs.find((pokemon) => pokemon.name === name);
+    setWildPokemon([pokemonToRelease, ...wildPokemon]);
+    setPokeballs(remainingPokemon);
+  }
+
   return (
-    <div className="App">
+    <div>
       <h1>Pokemon</h1>
-      {pokemon.map((pokemon) => (
-        <Card name={pokemon.name} type={pokemon.type} />
+      <h3>My Pokeballs ({pokeballs.length})</h3>
+      <section className="flex-container">
+        {pokeballs.map((pokemon) => (
+          <Pokeball
+            name={pokemon.name}
+            type={pokemon.type}
+            onReleasePokemon={releasePokemon}
+          />
+        ))}
+      </section>
+      {wildPokemon.map((pokemon) => (
+        <Card
+          name={pokemon.name}
+          type={pokemon.type}
+          onCatchPokemon={catchPokemon}
+        />
       ))}
     </div>
   );
