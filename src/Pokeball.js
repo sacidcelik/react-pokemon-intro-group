@@ -1,6 +1,7 @@
+import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 import getColor from './lib/Color';
 import OpenPokeball from './images/open-pokeball.png';
-import styled from 'styled-components/macro';
 
 export default function Pokeball({ name, type, onReleasePokemon }) {
   return (
@@ -45,3 +46,8 @@ const Ball = styled.article`
     transition: transform ease-in 0.3s;
   }
 `;
+Pokeball.propTypes = {
+  name: PropTypes.string,
+  type: PropTypes.string,
+  onReleasePokemon: PropTypes.func,
+};

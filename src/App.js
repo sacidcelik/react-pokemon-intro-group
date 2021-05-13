@@ -10,6 +10,13 @@ function App() {
     { name: 'Smettbo', type: 'Käfer' },
     { name: 'Vulpix', type: 'Feuer' },
     { name: 'Pummeluff', type: 'Fee' },
+    { name: 'Taubsi', type: 'Flug' },
+    { name: 'Raupi', type: 'Käfer' },
+    { name: 'Sichlor', type: 'Käfer' },
+    { name: 'Abra', type: 'Psycho' },
+    { name: 'Enton', type: 'Wasser' },
+    { name: 'Ratzfratz', type: 'Normal' },
+    { name: 'Kleinstein', type: 'Stein' },
   ];
 
   const [wildPokemon, setWildPokemon] = useState(pokemon);

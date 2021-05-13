@@ -6,6 +6,10 @@ export default function getColor(element) {
     Wasser: 'aqua',
     Käfer: 'lightgreen',
     Fee: 'lightpink',
+    Flug: 'skyblue',
+    Psycho: 'tan',
+    Stein: 'dimGray',
+    Normal: 'maroon',
     default: 'grey',
   };
 

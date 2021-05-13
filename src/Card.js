@@ -1,6 +1,7 @@
+import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 import Pokeball from './images/pokeball.svg';
 import getColor from './lib/Color';
-import styled from 'styled-components/macro';
 
 export default function Card(props) {
   // const name = props.name;
@@ -49,3 +50,8 @@ const CardWrapper = styled.article`
     transition: transform ease-in 0.3s;
   }
 `;
+Card.propTypes = {
+  name: PropTypes.string,
+  type: PropTypes.string,
+  onCatchPokemon: PropTypes.func,
+};
